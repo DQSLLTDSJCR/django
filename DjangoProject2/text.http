@@ -1,0 +1,4 @@
+### GET request to example server
+GET https://api.trace.moe/search?url=https://www.bing.com/images/search?q=%e7%b4%ab%e7%bd%97%e5%85%b0%e6%b0%b8%e6%81%92%e8%8a%b1%e5%9b%ad&id=2991EA58D0CA8EAFF4895FF52D1B68F7DE50F739&FORM=IQFRBA
+
+###

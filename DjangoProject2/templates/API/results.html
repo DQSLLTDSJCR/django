@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f1f3f, #101023); /* 深色渐变背景 */
+            color: #f1f1f1; /* 提高文本可读性 */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2); /* 半透明浅色背景 */
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); /* 加强阴影效果 */
+            color: #ffffff; /* 卡片内文本颜色 */
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, #6a11cb, #2575fc); /* 更鲜明的渐变 */
+            color: #ffffff;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-body p {
+            color: #e0e0e0; /* 稍浅的灰色文本，提升对比度 */
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        video {
+            width: 100%;
+            border: 3px solid #ffffff; /* 添加视频边框 */
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7); /* 视频区域突出 */
+            margin-top: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border: none;
+            padding: 10px 20px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">搜索结果</div>
+        <div class="card-body">
+            {% if result.error %}
+                <p class="text-danger">错误：{{ result.error }}</p>
+            {% else %}
+                <p><strong>动漫名称：</strong>{{ result.anime_name }}</p>
+                <p><strong>剧集：</strong>{{ result.episode }}</p>
+                <p><strong>时间戳：</strong>{{ result.timestamp }}</p>
+                <p><strong>相似度：</strong>{{ result.similarity }}</p>
+                <video controls>
+                    <source src="{{ result.video_preview }}" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <a href="/" class="btn btn-primary">重新搜索</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机 Neko 图片</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>随机 Neko 图片</h1>
+    <!-- 如果图片 URL 存在，则显示图片 -->
+    {% if image_url %}
+        <img id="neko-image" src="{{ image_url }}" alt="Neko Image">
+    {% else %}
+        <p class="error">加载图片失败，请稍后再试。</p>
+    {% endif %}
+    <form method="get">
+        <button class="btn" onclick="loadNekoImage()">Get New Neko Image</button>
+    </form>
+</div>
+</body>
+</html>
